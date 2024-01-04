@@ -8,18 +8,6 @@ export function Main({ greet }) {
         letName(greet)
     }, []);
 
-    // const imagesType =['nature','photograhy','advanture','tours'];
-
-    // function imageCheck(mergeWith){
-    //  imagesType.forEach(mergeWith);
-    // };
-
-
-
-    // function mergeWith(item){
-    //     console.log(imagesType)
-    // }
-
     return (
         <div style={{ background: 'lightpink' }}>
             <h1 style={{ color: 'red', paddingTop: '20px' }}>Props are immutable</h1>

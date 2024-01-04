@@ -1,19 +1,15 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef} from 'react'
 import contextImg from './context/imgContext'
 
 function SecMain(props) {
   let inputRef = useRef(null);
-
   const contextImages = useContext(contextImg);
-  console.log(contextImages);
-
-
   const handleSearch = () => {
     inputRef.current.value = 'Iphone';
     inputRef.current.focus();
-    inputRef.current.style.color='blue';
+    inputRef.current.style.color = 'blue';
   }
-
+  if (contextImages.loading) return <h1>loading</h1>
   return (
     <div>
       <p> After set state props will be change {props.mainState}</p>
@@ -21,19 +17,24 @@ function SecMain(props) {
         <input type='text' placeholder='Search Images' ref={inputRef} />
         <button onClick={handleSearch}>Searach Images</button>
       </div>
-      {/* {contextImages &&
-        contextImages.imgs.map((img) => {
-          console.log(img.thumbnail)
+      {contextImages &&
+        contextImages.imgs.map((img,index) => {
+          // console.log(img.description)
           return (
-            <>
-              < img src={img.thumbnail} alt='natural' style={{ height: '30%', width: '40%' }} />
-            </>
+            <div style={{ display: 'flex' }} key={index}>
+              <div >
+                < img src={img.thumbnail}   lalt='natural' style={{ justifyContent: 'flex-start' }} />
+              </div>
+              <div style={{background:'yellow'}}>
+                <button>
+                  Buy
+                </button>
+                <p>{img.description}</p>
+              </div>
+            </div>
           )
         })
-      } */}
-      <button>
-        Buy
-      </button>
+      }
     </div>
   )
 }
